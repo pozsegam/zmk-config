@@ -9,6 +9,18 @@
 #include <dt-bindings/zmk/bt.h>
 
 / {
+        behaviors {
+          tp: tap_preferred {
+            compatible = "zmk,behavior-hold-tap";
+            label = "TAP_PREFERRED";
+            #binding-cells = <2>;
+            tapping-term-ms = <150>;
+            quick-tap-ms = <0>;
+            flavor = "tap-preferred";
+            bindings = <&kp>, <&kp>;
+          }; 
+        };
+
         keymap {
                 compatible = "zmk,keymap";
 
@@ -25,7 +37,8 @@
                &kp LGUI &mo 1 &tp LALT RET   &tp LC(LS(LA(LGUI))) SPACE &kp BSPC &mo 2
                         >;
                 };
-                lower_layer {
+
+                layer_below {
 // -----------------------------------------------------------------------------------------
 // |      |  !  |  @  |  #  |  $  |    %     |   |  ^  |  &  |  *  |  (  |  )  |   \   |
 // |      |  1  |  2  |  3  |  4  |    5     |   |  -  |  =  |  `  |  [  |  ]  |  "|"  |
@@ -39,7 +52,7 @@
                         >;
                 };
 
-                raise_layer {
+                layer_above {
 // -----------------------------------------------------------------------------------------
 // |       |  F1  |  F2  |  F3  |  F4  |  F5 |            |  F6  |  F7  |  F8  |  F9  |  F10  |   |
 // |       | Prev | Next | Vol - | Vol + | Play/Pause |   |      | LFT | DWN |  UP | RGT |     |     |
